@@ -3,7 +3,6 @@ import StepForm from "./step_form";
 import StepListItemContainer from './step_list_item_container'
 
 const StepList = (props) => {
-    console.log(props)
     const stepList = props.steps.map((step, idx) => {
         return(
             <StepListItemContainer 
