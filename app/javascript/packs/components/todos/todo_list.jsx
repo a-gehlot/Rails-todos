@@ -4,9 +4,6 @@ import TodoForm from "./todo_form";
 import TodoListItem from "./todo_list_item";
 
 const TodoList = (props) => {
-
-    console.log(props)
-
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -16,12 +13,13 @@ const TodoList = (props) => {
     return(
         <div className="todo-list">
             <TodoForm 
-                receiveTodo={ props.receiveTodo } />
+                receiveTodo={ props.receiveTodo }
+                createTodo={ props.createTodo } />
             <ul className="todo-items">
                 {props.todos.map((todo, idx) => {
                     return (
                         <TodoListItem key={idx} todo={todo} 
-                        receiveTodo={ props.receiveTodo} />)
+                        receiveTodo={ props.receiveTodo } />)
                 })}
             </ul>
         </div>

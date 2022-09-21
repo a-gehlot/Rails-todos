@@ -8,7 +8,7 @@ function TodoForm(props) {
     function handleSubmit(e) {
         e.preventDefault();
         const todo = Object.assign({}, {title: title, body: body}, {id: uniqueId()})
-        props.receiveTodo(todo)
+        props.createTodo(todo);
         setTitle("");
         setBody("");
     }

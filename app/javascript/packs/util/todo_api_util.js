@@ -5,3 +5,11 @@ export const fetchTodos = () => {
     }))
 }
 
+export const postTodo = (todo) => {
+    return(jQuery.ajax({
+        method: 'POST',
+        url: '/api/todos',
+        data: todo
+    }))
+}
+

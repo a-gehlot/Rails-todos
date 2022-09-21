@@ -32,3 +32,12 @@ export const fetchTodos = () => dispatch => {
         })
     )
 }
+
+export const createTodo = (todo) => {
+    APIUtil.createTodo(todo).then(res => {
+        dispatch({
+            type: RECEIVE_TODO,
+            todo: res,
+        })
+    })
+}
