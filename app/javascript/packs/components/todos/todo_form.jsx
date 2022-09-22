@@ -7,10 +7,8 @@ function TodoForm(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        const todo = Object.assign({}, {title: title, body: body}, {id: uniqueId()})
-        props.createTodo(todo);
-        setTitle("");
-        setBody("");
+        const todo = Object.assign({}, {todo: {title: title, body: body, id: uniqueId(), done: false}})
+        props.createTodo(todo)
     }
 
     return(

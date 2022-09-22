@@ -11,6 +11,7 @@ export const receiveTodos = (todos) => {
 }
 
 export const receiveTodo = (todo) => {
+    console.log('got here')
     return {
         type: RECEIVE_TODO,
         todo,
@@ -33,11 +34,17 @@ export const fetchTodos = () => dispatch => {
     )
 }
 
-export const createTodo = (todo) => {
-    APIUtil.createTodo(todo).then(res => {
+export const createTodo = (todo) => dispatch => {
+    APIUtil.postTodo(todo).then(res => {
         dispatch({
             type: RECEIVE_TODO,
             todo: res,
         })
     })
 }
+
+// export const createTodo = todo => dispatch => (
+//     TodoAPIUtil.createTodo(todo)
+//         .then(todo => { dispatch(receiveTodo(todo)); dispatch(clearErrors()) },
+//             // err => dispatch(receiveErrors(err.responseJSON)))
+// ));
