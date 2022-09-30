@@ -7,8 +7,11 @@ function TodoForm(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        const todo = Object.assign({}, {todo: {title: title, body: body, id: uniqueId(), done: false}})
-        props.createTodo(todo)
+        const todo = Object.assign({}, {todo: {title: title, body: body, done: false}})
+        props.createTodo(todo).then(() => {
+            setBody('')
+            setTitle('');
+        })
     }
 
     return(
@@ -26,6 +29,7 @@ function TodoForm(props) {
                 onChange={event => setBody(event.target.value)}
                 value={body} />
             <input type="submit" value="Submit" />
+            <div>Error: {props.errors}</div>
         </form>
     )
 }

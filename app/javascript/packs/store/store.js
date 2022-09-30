@@ -12,7 +12,7 @@ if (window.localStorage.state) {
 }
 
 
-const store = configureStore({ reducer: rootReducer, preloadedState, middleware: [thunk] })
+const store = configureStore({ reducer: rootReducer, middleware: [thunk] })
 
 const addLocalStore = () => {
     localStorage.state = JSON.stringify(store.getState())

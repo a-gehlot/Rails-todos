@@ -2,6 +2,7 @@ export const RECEIVE_TODOS = "RECEIVE_TODOS"
 export const RECEIVE_TODO = "RECEIVE_TODO"
 export const REMOVE_TODO = "REMOVE_TODO"
 import * as APIUtil from '../util/todo_api_util'
+import { CLEAR_ERRORS, receiveErrors } from './error_actions'
 
 export const receiveTodos = (todos) => {
     return {
@@ -11,7 +12,6 @@ export const receiveTodos = (todos) => {
 }
 
 export const receiveTodo = (todo) => {
-    console.log('got here')
     return {
         type: RECEIVE_TODO,
         todo,
@@ -35,16 +35,16 @@ export const fetchTodos = () => dispatch => {
 }
 
 export const createTodo = (todo) => dispatch => {
-    APIUtil.postTodo(todo).then(res => {
-        dispatch({
-            type: RECEIVE_TODO,
-            todo: res,
-        })
-    })
+    return(APIUtil.postTodo(todo)
+        .then((res) => {
+            dispatch({
+                type: RECEIVE_TODO,
+                todo: res
+            });
+            dispatch({
+                type: CLEAR_ERRORS
+            })
+        }, 
+        err => dispatch(receiveErrors(err.responseJSON)))
+    )
 }
-
-// export const createTodo = todo => dispatch => (
-//     TodoAPIUtil.createTodo(todo)
-//         .then(todo => { dispatch(receiveTodo(todo)); dispatch(clearErrors()) },
-//             // err => dispatch(receiveErrors(err.responseJSON)))
-// ));
