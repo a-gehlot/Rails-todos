@@ -13,3 +13,18 @@ export const postTodo = (todo) => {
     }))
 }
 
+export const updateTodo = (todo) => {
+    return(jQuery.ajax({
+        method: 'PATCH',
+        url: `/api/todos/${todo.todo.id}`,
+        data: todo,
+    }))
+}
+
+export const deleteTodo = (todo) => {
+    return(jQuery.ajax({
+        method: 'DELETE',
+        url: `/api/todos/${todo.id}`
+    }))
+}
+

@@ -17,12 +17,13 @@ function TodoListItem(props) {
             props.todo,
             {done: !props.todo.done}
         )
-        props.receiveTodo(toggledTodo)
+        props.updateTodo({todo: toggledTodo})
     }
 
     function checkForDetail() {
         if (!detail) {
-            return <TodoDetailViewContainer todo={props.todo} />
+            return <TodoDetailViewContainer todo={ props.todo }
+            />
         }
     }
 

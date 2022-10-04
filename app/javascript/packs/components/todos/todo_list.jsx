@@ -21,7 +21,8 @@ const TodoList = (props) => {
                 {props.todos.map((todo, idx) => {
                     return (
                         <TodoListItem key={idx} todo={todo} 
-                        receiveTodo={ props.receiveTodo } />)
+                        deleteTodo={ props.deleteTodo }
+                        updateTodo={ props.updateTodo } />)
                 })}
             </ul>
         </div>

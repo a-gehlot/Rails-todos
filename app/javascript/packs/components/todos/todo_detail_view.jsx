@@ -2,10 +2,11 @@ import React from "react";
 import StepListContainer from "../steps/step_list_container";
 
 const TodoDetailView = (props) => {
+    console.log(props.todo)
     return(
         <ul className="todo-detail-view">
             <li className="todo-body">{props.todo.body}</li>
-            <button className="remove-todo" onClick={e => props.removeTodo(props.todo)}>Delete</button>
+            <button className="remove-todo" onClick={e => props.deleteTodo(props.todo)}>Delete</button>
             <StepListContainer todo_id={props.todo.id} />
         </ul>
     )
