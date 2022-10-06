@@ -1,25 +1,10 @@
 import { RECEIVE_STEP, REMOVE_STEP, RECEIVE_STEPS } from "../actions/step_actions";
 
-const initialState = {
-    1: {
-        id: 1,
-        title: "buy soap",
-        todo_id: 1,
-        done: false
-    },
 
-    2: {
-        id: 2,
-        title: "buy scrubber",
-        todo_id: 1,
-        done: false
-    }
-}
-
-const stepsReducer = (state = initialState, action) => {
+const stepsReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_STEPS:
-            nextState = Object.assign({}, state);
+            let nextState = Object.assign({}, state);
             action.steps.forEach((step) => nextState[step.id] = step);
             return nextState;
 

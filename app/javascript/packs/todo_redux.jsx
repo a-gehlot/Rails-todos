@@ -2,7 +2,7 @@ import * as ReactDOMClient from 'react-dom/client';
 import React from 'react';
 import store from './store/store';
 import { receiveTodo, receiveTodos, removeTodo, fetchTodos } from "./actions/todo_actions"
-import { receiveStep, receiveSteps, removeStep } from "./actions/step_actions"
+import { receiveStep, receiveSteps, removeStep, fetchSteps } from "./actions/step_actions"
 import { allTodos, stepsByTodoId } from './reducers/selectors';
 import App from "./components/App"
 import Root from './components/root';
@@ -20,6 +20,7 @@ window.allTodos = allTodos
 window.stepsByTodoId = stepsByTodoId;
 window.fetchTodos = fetchTodos;
 window.APIUtil = APIUtil;
+window.fetchSteps = fetchSteps;
 
 
 

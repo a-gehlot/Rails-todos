@@ -2,7 +2,6 @@ import React from "react";
 import StepListContainer from "../steps/step_list_container";
 
 const TodoDetailView = (props) => {
-    console.log(props.todo)
     return(
         <ul className="todo-detail-view">
             <li className="todo-body">{props.todo.body}</li>

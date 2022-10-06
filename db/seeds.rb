@@ -11,3 +11,9 @@ Todo.create([
     { title: 'Second todo', body: 'My second todo', done: false},
     { title: 'Third todo', body: 'My third todo', done: true},
 ])
+
+Step.create([
+    { title: 'First step', body: 'First step body', done: false, todo_id: 38 },
+    { title: 'Second step', body: 'Second step body', done: true, todo_id: 38 },
+    { title: 'Another first step', body: 'Another step body', done: false, todo_id: 39 },
+])
