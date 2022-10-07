@@ -5,11 +5,10 @@ const StepForm = (props) => {
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
 
-
     function handleSubmit(e) {
         e.preventDefault();
-        const step = Object.assign({}, { title: title, body: body, todo_id: props.todo_id }, { id: uniqueID() })
-        props.receiveStep(step)
+        const step = Object.assign({}, { title: title, body: body, todo_id: props.todo_id, done: false }, { id: uniqueID() })
+        props.createStep({step: step})
         setTitle("");
         setBody("");
     }

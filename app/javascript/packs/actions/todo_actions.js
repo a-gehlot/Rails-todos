@@ -50,10 +50,8 @@ export const createTodo = (todo) => dispatch => {
 }
 
 export const updateTodo = (todo) => dispatch => {
-    console.log(todo)
     return(APIUtil.updateTodo(todo)
     .then((res) => {
-        console.log(res)
         dispatch({
             type: RECEIVE_TODO,
             todo: res
