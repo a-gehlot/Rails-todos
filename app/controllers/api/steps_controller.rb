@@ -18,9 +18,9 @@ class Api::StepsController < ApplicationController
         @step = Step.find(params[:id])
 
         if @step.update(step_params)
-            render json: @todo
+            render json: @step
         else
-            render json :@todo.errors.full_messages, status: 422
+            render json :@step.errors.full_messages, status: 422
         end
     end
 

@@ -6,8 +6,9 @@ import StepList from "./step_list";
 
 
 const mapDispatchToProps = (dispatch) => ({
-    receiveStep: (todo) => dispatch(receiveStep(todo)),
-    requestSteps: () => dispatch(fetchTodos())
+    receiveStep: (step) => dispatch(receiveStep(step)),
+    requestSteps: () => dispatch(fetchTodos()),
+    createStep: (step) => dispatch(createStep(step))
 })
 
 const mapStateToProps = (state, {todo_id}) => ({

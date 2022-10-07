@@ -1,13 +1,14 @@
 import React from "react";
 
 const StepListItem = (props) => {
+
     function toggleDone(e) {
         e.preventDefault();
-        let toggledStep = Object.assign({},
+        const toggledStep = Object.assign({},
             props.step,
             {done: !props.step.done}
         )
-        props.receiveStep(toggledStep)
+        props.updateStep({step: toggledStep})
     }
 
     const style = {
@@ -18,8 +19,9 @@ const StepListItem = (props) => {
     return(
         <ul className="step-list-item">
             <li className="step-title" style={style}>{props.step.title}</li>
+            <li className="step-body" style={style}>{props.step.body}</li>
             <button className="step-done" onClick={toggleDone}>{ props.step.done ? "Undo" : "Done" }</button>
-            <button className="step-delete" onClick={e => props.removeStep(props.step)}>Delete</button>
+            <button className="step-delete" onClick={e => props.deleteStep(props.step)}>Delete</button>
         </ul>
 
     )

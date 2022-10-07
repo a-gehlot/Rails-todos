@@ -48,3 +48,27 @@ export const createStep = (step) => dispatch => {
         err => dispatch(receiveErrors(err.responseJSON)))
     )
 }
+
+export const updateStep = (step) => dispatch => {
+    return(APIUtil.updateStep(step)
+    .then((res) => {
+        dispatch({
+            type: RECEIVE_STEP,
+            step: res
+        })
+    },
+    err => dispatch(receiveErrors(err.responseJSON)))   
+    )
+}
+
+export const deleteStep = (step) => dispatch => {
+    return(APIUtil.deleteStep(step)
+    .then(() => {
+        dispatch({
+            type: REMOVE_STEP,
+            step: step
+        })
+    },
+    err => dispatch(receiveErrors(err.responseJSON)))
+    )
+}

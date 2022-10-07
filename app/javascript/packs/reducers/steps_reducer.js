@@ -8,7 +8,8 @@ const stepsReducer = (state = {}, action) => {
             action.steps.forEach((step) => nextState[step.id] = step);
             return nextState;
 
-        case RECEIVE_STEP: return {
+        case RECEIVE_STEP: 
+            return {
             ...state,
             [action.step.id]: action.step
         }
