@@ -4,14 +4,23 @@ import uniqueId from "../../util/unique_id"
 function TodoForm(props) {
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
+    const [newTag, setNewTag] = useState('');
+    const [tagNames, setTagNames] = useState([]);
 
     function handleSubmit(e) {
         e.preventDefault();
-        const todo = Object.assign({}, {todo: {title: title, body: body, done: false}})
+        const todo = Object.assign({}, {todo: {title: title, body: body, done: false, tag_names: tagNames}})
         props.createTodo(todo).then(() => {
             setBody('')
             setTitle('');
+            setTagNames([]);
+            setNewTag('')
         })
+    }
+
+    function addTag(e) {
+        e.preventDefault();
+        setTagNames([...tagNames, newTag]);
     }
 
     return(
@@ -28,6 +37,17 @@ function TodoForm(props) {
                 id="body" 
                 onChange={event => setBody(event.target.value)}
                 value={body} />
+            <input 
+                type="text"
+                id="tag"
+                onChange={event => setNewTag(event.target.value)}
+                value={newTag} />
+            <button type="button" className="tag-button" onClick={addTag}>Add Tag</button>
+            <ul className="tags">Tags
+                {tagNames.map((tag, index) => {
+                    return(<li key={index}>{tag}</li>)
+                })}
+            </ul>
             <input type="submit" value="Submit" />
             <div>Error: {props.errors}</div>
         </form>
