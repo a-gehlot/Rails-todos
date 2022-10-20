@@ -9,4 +9,8 @@
             <%= form.password_field :password, required: true %>
     </div>
     <%= form.submit "Sign in" %>
+    <div>
+        <h1>Not a user?</h1>
+        <%= link_to "Sign Up", new_user_path, class: "sign-up-btn" %>
+    </div>
 <% end %>
