@@ -25,6 +25,7 @@ gem 'binding_of_caller'
 gem 'better_errors'
 gem 'annotate'
 gem 'pry-rails'
+gem 'bcrypt'
 
 gem 'psych', '< 4'
 
