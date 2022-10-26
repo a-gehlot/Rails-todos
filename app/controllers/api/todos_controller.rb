@@ -1,12 +1,11 @@
 class Api::TodosController < ApplicationController
-    protect_from_forgery with: :null_session
-
+    
     def show
         render json: Todo.find(params[:id]), include: :tags
     end
 
     def create
-        @todo = Todo.new(todo_params)
+        @todo = current_user.todos.new(todo_params)
         if @todo.save
             render json: @todo, include: :tags
         else
@@ -15,11 +14,11 @@ class Api::TodosController < ApplicationController
     end
 
     def index
-        render json: Todo.all, include: :tags
+        render json: current_user.todos, include: :tags
     end
     
     def update
-        @todo = Todo.find(params[:id])
+        @todo = current_user.todos.find(params[:id])
         
         if @todo.update(todo_params)
             render json: @todo, include: :tags
@@ -29,7 +28,7 @@ class Api::TodosController < ApplicationController
     end
 
     def destroy
-        @todo = Todo.find(params[:id])
+        @todo = current_user.todos.find(params[:id])
 
         if @todo.destroy
             render json: {}, status: 200

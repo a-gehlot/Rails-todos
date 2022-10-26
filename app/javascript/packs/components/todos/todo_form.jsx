@@ -18,6 +18,16 @@ function TodoForm(props) {
         })
     }
 
+    function renderError() {
+        if (props.errors[0]) {
+            return(
+                <ul>Error: 
+                    {props.errors[0].map((err, idx) => <li key={idx}>{err}</li>)}
+                </ul>
+            )
+        }
+    }
+
     function addTag(e) {
         e.preventDefault();
         setTagNames([...tagNames, newTag]);
@@ -49,7 +59,7 @@ function TodoForm(props) {
                 })}
             </ul>
             <input type="submit" value="Submit" />
-            <div>Error: {props.errors}</div>
+            {renderError()}
         </form>
     )
 }
